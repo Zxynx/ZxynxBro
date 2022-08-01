@@ -54,10 +54,14 @@ def skip_mission(token):
 			if "apiError" in str(backend_data):
 				pass
 			else:
-				logs = backend_data['Logs']
-				msg = logs[len(logs)-1]['Message']
-				print(f'[{token}] {msg}')
-	
+				
+                  js = json.loads(response)
+			logs = js['data']['Logs']
+			cash = logs[len(logs)-1]['Message'].split()[5]
+			print(f'[✅]SUCCESS|You Earn Money •➣ {cash}')
+                        print(f'[⌛]PLEASE WAIT • Ryz is thinking')
+                        print(f'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◥◣◆◢◤▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬')
+
 def pass_mission():
 	carrer = create_mission()
 	if carrer != None:	
